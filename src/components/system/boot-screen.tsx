@@ -2,37 +2,41 @@
 
 import { useState, useEffect } from 'react';
 import { useOS } from '@/context/os-provider';
-import { Progress } from '@/components/ui/progress';
-import { AetherLogo } from './aether-logo';
+import { cn } from '@/lib/utils';
 
 export function BootScreen() {
   const { completeBoot } = useOS();
-  const [progress, setProgress] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
 
+  // Simulate loading and then trigger fade out
   useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(timer);
-          setTimeout(completeBoot, 500); // Wait half a second before swapping UI
-          return 100;
-        }
-        return prev + Math.random() * 10;
-      });
-    }, 150);
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 2500); // Wait for the intro animation to finish
 
-    return () => clearInterval(timer);
-  }, [completeBoot]);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // When fade out animation starts, wait for it to finish then complete boot
+  useEffect(() => {
+    if (isLoaded) {
+      const timer = setTimeout(() => {
+        completeBoot();
+      }, 500); // Corresponds to CSS transition duration + a small buffer
+      return () => clearTimeout(timer);
+    }
+  }, [isLoaded, completeBoot]);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-black">
-      <div className="flex flex-col items-center gap-6">
-        <AetherLogo className="w-24 h-24 text-white" />
-        <div className="w-64">
-          <Progress value={progress} className="h-2 bg-gray-800" />
-        </div>
-        <p className="text-sm text-gray-400">Starting Aether OS...</p>
-      </div>
+    <div className={cn("loader", isLoaded && "hidden")}>
+        <svg viewBox="0 0 400 160">
+            <text x="50%" y="50%" dy=".32em" textAnchor="middle" className="text-body">
+                Habel
+            </text>
+            <text x="50%" y="50%" dy=".32em" dx="1.5em" textAnchor="middle" className="text-dot">
+                .
+            </text>
+        </svg>
     </div>
   );
 }
