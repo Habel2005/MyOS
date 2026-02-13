@@ -95,6 +95,10 @@ export default {
         'dock-item-jump': {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
+        },
+        'fade-in': {
+          'from': { opacity: '0' },
+          'to': { opacity: '1' },
         }
       },
       animation: {
@@ -102,6 +106,7 @@ export default {
         'accordion-up': 'accordion-up 0.2s ease-out',
         'window-open': 'window-open 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
         'dock-item-jump': 'dock-item-jump 0.5s ease-in-out 1',
+        'fade-in': 'fade-in 0.5s ease-in-out',
       },
     },
   },

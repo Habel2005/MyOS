@@ -10,6 +10,7 @@ type State = {
   windows: WindowInstance[];
   activeWindowId: string | null;
   nextZIndex: number;
+  isBooted: boolean;
 };
 
 type Action =
@@ -19,12 +20,14 @@ type Action =
   | { type: 'MINIMIZE_WINDOW'; payload: string }
   | { type: 'TOGGLE_MAXIMIZE_WINDOW'; payload: string }
   | { type: 'UPDATE_WINDOW_POSITION'; payload: { id: string; position: { x: number; y: number } } }
-  | { type: 'UPDATE_WINDOW_SIZE'; payload: { id: string; size: { width: number; height: number } } };
+  | { type: 'UPDATE_WINDOW_SIZE'; payload: { id: string; size: { width: number; height: number } } }
+  | { type: 'COMPLETE_BOOT' };
 
 const initialState: State = {
   windows: [],
   activeWindowId: null,
   nextZIndex: 100,
+  isBooted: false,
 };
 
 const osReducer = (state: State, action: Action): State => {
@@ -109,6 +112,11 @@ const osReducer = (state: State, action: Action): State => {
             win.id === action.payload.id ? { ...win, size: action.payload.size } : win
           ),
         };
+    case 'COMPLETE_BOOT':
+      return {
+        ...state,
+        isBooted: true,
+      };
     default:
       return state;
   }
@@ -125,6 +133,7 @@ const OSProviderContent = ({ children }: { children: ReactNode }) => {
   const toggleMaximizeWindow = useCallback((id: string) => dispatch({ type: 'TOGGLE_MAXIMIZE_WINDOW', payload: id }), []);
   const updateWindowPosition = useCallback((id: string, position: { x: number; y: number }) => dispatch({ type: 'UPDATE_WINDOW_POSITION', payload: { id, position } }), []);
   const updateWindowSize = useCallback((id: string, size: { width: number; height: number }) => dispatch({ type: 'UPDATE_WINDOW_SIZE', payload: { id, size } }), []);
+  const completeBoot = useCallback(() => dispatch({ type: 'COMPLETE_BOOT' }), []);
 
   const value = {
     ...state,
@@ -137,6 +146,7 @@ const OSProviderContent = ({ children }: { children: ReactNode }) => {
     toggleMaximizeWindow,
     updateWindowPosition,
     updateWindowSize,
+    completeBoot,
   };
 
   return <OSContext.Provider value={value}>{children}</OSContext.Provider>;

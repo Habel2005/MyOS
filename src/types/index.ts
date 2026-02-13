@@ -32,6 +32,8 @@ export interface OSContextType {
   toggleMaximizeWindow: (id: string) => void;
   updateWindowPosition: (id: string, position: { x: number; y: number }) => void;
   updateWindowSize: (id: string, size: { width: number; height: number }) => void;
+  isBooted: boolean;
+  completeBoot: () => void;
 }
 
 export type { File };
