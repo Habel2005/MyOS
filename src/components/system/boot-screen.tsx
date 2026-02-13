@@ -12,7 +12,7 @@ export function BootScreen() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoaded(true);
-    }, 2500); // Wait for the intro animation to finish
+    }, 3300); // Wait for the intro animation to finish
 
     return () => clearTimeout(timer);
   }, []);
