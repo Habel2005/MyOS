@@ -109,50 +109,56 @@
     width: 20rem;
 }
 
-.loader .text-body,
-.loader .text-dot {
+.loader svg text {
     font-size: 6rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
+    stroke-width: 2;
     letter-spacing: -6px;
 }
 
 .loader .text-body {
-    animation: stroke-and-fill 3s ease-in-out forwards;
+    stroke: #e8e5ff;
+    color: #040115;
+    animation: 3.3s infinite alternate animate;
 }
 
 .loader .text-dot {
+    stroke: #e8e5ff;
     fill: #e8e5ff;
-    animation: animate-dot 1s 2s forwards;
-    opacity: 0;
+    animation: 3.5s alternate infinite animate-dot;
 }
 
-@keyframes stroke-and-fill {
+@keyframes animate {
     0% {
-        stroke-dasharray: 500;
-        stroke-dashoffset: 500;
         fill: transparent;
         stroke: #e8e5ff;
-        stroke-width: 2;
+        stroke-width: 3;
+        stroke-dashoffset: 25%;
+        stroke-dasharray: 0 26%;
     }
+
     50% {
-        stroke-dashoffset: 0;
         fill: transparent;
         stroke: #e8e5ff;
-        stroke-width: 2;
+        stroke-width: 3;
     }
-    80%, 100% {
+
+    80%,
+    100% {
         fill: #e8e5ff;
-        stroke-width: 0;
         stroke: transparent;
+        stroke-width: 0;
+        stroke-dashoffset: -25%;
+        stroke-dasharray: 26% 0;
     }
 }
 
 @keyframes animate-dot {
-    from {
+    0%, 60% {
         opacity: 0;
     }
-    to {
+    100% {
         opacity: 1;
     }
 }
