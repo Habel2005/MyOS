@@ -1,3 +1,34 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "project-1",
+      "description": "A preview of an e-commerce website project.",
+      "imageUrl": "https://images.unsplash.com/photo-1641444473327-ea736547d7bb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx3ZWJzaXRlJTIwcG9ydGZvbGlvfGVufDB8fHx8MTc3MDk4MzQzMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "website portfolio"
+    },
+    {
+      "id": "project-2",
+      "description": "A preview of a mobile application project.",
+      "imageUrl": "https://images.unsplash.com/photo-1542641728-6ca359b085f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtb2JpbGUlMjBhcHB8ZW58MHx8fHwxNzcwOTY0NDQ5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mobile app"
+    },
+    {
+      "id": "project-3",
+      "description": "A preview of a data analytics dashboard project.",
+      "imageUrl": "https://images.unsplash.com/photo-1613347761493-4060c969cd28?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxkYXNoYm9hcmQlMjBhbmFseXRpY3N8ZW58MHx8fHwxNzcwOTUzNzM4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dashboard analytics"
+    },
+    {
+      "id": "profile",
+      "description": "A profile picture.",
+      "imageUrl": "https://images.unsplash.com/photo-1567324216289-97cc4134f626?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxwb3J0cmFpdCUyMG1hbnxlbnwwfHx8fDE3NzA5MTgzMjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "portrait man"
+    },
+    {
+      "id": "wallpaper",
+      "description": "Desktop wallpaper.",
+      "imageUrl": "https://images.unsplash.com/photo-1613327986042-63d4425a1a5d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxhYnN0cmFjdCUyMHB1cnBsZXxlbnwwfHx8fDE3NzA5NDYyODh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract purple"
+    }
+  ]
 }
